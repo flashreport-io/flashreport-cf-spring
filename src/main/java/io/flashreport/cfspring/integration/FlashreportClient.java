@@ -21,6 +21,7 @@ import java.util.Base64;
 public class FlashreportClient {
 
     private static final String CREATE_URL = "https://gateway.flashreport.io/api/v1/report/new";
+    private static final String BASE_URL = "https://gateway.flashreport.io/api/v1/report/";
 
     private String API_KEY;
 
@@ -67,6 +68,18 @@ public class FlashreportClient {
 
         if (response.getStatusCode().equals(HttpStatus.CREATED)) {
             return response.getHeaders().getLocation();
+        } else {
+            throw new RuntimeException("Received unexpected response code : " + response.getStatusCode());
+        }
+    }
+
+    public String getReportStatus(String reportUuid) {
+        HttpEntity entity = new HttpEntity<>(getHeaders());
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(BASE_URL + reportUuid, HttpMethod.GET, entity, String.class);
+
+        if (response.getStatusCode().equals(HttpStatus.OK)) {
+            return response.getBody();
         } else {
             throw new RuntimeException("Received unexpected response code : " + response.getStatusCode());
         }

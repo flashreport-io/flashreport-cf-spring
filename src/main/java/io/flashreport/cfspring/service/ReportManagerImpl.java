@@ -26,6 +26,11 @@ public class ReportManagerImpl implements ReportManager {
 
     }
 
+    @Override
+    public String getReportStatus(String uuid) {
+        return client.getReportStatus(uuid);
+    }
+
     private String readTestMessage(String fileName) {
         InputStream is = this.getClass().getResourceAsStream("/" + fileName);
         StringBuilder stringBuilder = new StringBuilder();

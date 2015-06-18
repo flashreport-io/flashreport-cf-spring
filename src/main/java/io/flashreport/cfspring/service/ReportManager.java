@@ -12,4 +12,6 @@ public interface ReportManager {
      */
     String generateReport();
 
+    String getReportStatus(String UUID);
+
 }

@@ -32,7 +32,7 @@ public class ReportController {
 
     @RequestMapping("/report/{uuid}")
     public String viewReportStatus(@PathVariable String uuid) {
-        return "todo";
+        return reportManager.getReportStatus(uuid);
     }
 
 }
