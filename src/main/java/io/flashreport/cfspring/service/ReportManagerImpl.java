@@ -1,6 +1,7 @@
 package io.flashreport.cfspring.service;
 
 import io.flashreport.cfspring.integration.FlashreportClient;
+import io.flashreport.cfspring.integration.ReportStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
@@ -27,7 +28,7 @@ public class ReportManagerImpl implements ReportManager {
     }
 
     @Override
-    public String getReportStatus(String uuid) {
+    public ReportStatus getReportStatus(String uuid) {
         return client.getReportStatus(uuid);
     }
 

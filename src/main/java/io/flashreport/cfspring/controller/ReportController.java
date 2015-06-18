@@ -1,5 +1,6 @@
 package io.flashreport.cfspring.controller;
 
+import io.flashreport.cfspring.integration.ReportStatus;
 import io.flashreport.cfspring.service.ReportManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ public class ReportController {
     }
 
     @RequestMapping("/report/{uuid}")
-    public String viewReportStatus(@PathVariable String uuid) {
+    public ReportStatus viewReportStatus(@PathVariable String uuid) {
         return reportManager.getReportStatus(uuid);
     }
 

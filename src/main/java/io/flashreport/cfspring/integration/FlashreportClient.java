@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Base64;
 
 /**
@@ -73,13 +74,28 @@ public class FlashreportClient {
         }
     }
 
-    public String getReportStatus(String reportUuid) {
+    public ReportStatus getReportStatus(String uuid) {
+        try {
+            return getReportStatus(new URI(BASE_URL + uuid));
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException("Unable to construct a uri with report uuid [" + uuid + "]");
+        }
+    }
+
+    public ReportStatus getReportStatus(URI reportUri) {
         HttpEntity entity = new HttpEntity<>(getHeaders());
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(BASE_URL + reportUuid, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(reportUri, HttpMethod.GET, entity, String.class);
 
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            return response.getBody();
+            ObjectMapper mapper = new ObjectMapper();
+            ReportStatus status;
+            try {
+                status = mapper.readValue(response.getBody(), ReportStatus.class);
+            } catch (IOException e) {
+                throw new RuntimeException("Could not parse response body : " + response.getBody());
+            }
+            return status;
         } else {
             throw new RuntimeException("Received unexpected response code : " + response.getStatusCode());
         }
