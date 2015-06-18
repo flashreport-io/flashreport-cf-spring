@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flashreport CloudFoundry Spring sample</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+
+<h1>Flashreport CloudFoundry Spring sample</h1>
+
+<p>
+    This sample application lets you generate reports using the flashreport api.<br/>
+    Unless you inject the VCAP_SERVICES environment variable yourself, it will only work
+    correctly when deployed on CloudFoundry and bound to a flashreport service.
+</p>
+
+<h2>Generate a report</h2>
+
+<p>Use the /report/new endpoint to generate a report. For your convenience, this endpoint support both GET and
+    POST.<br/>
+    From there you can use two other endpoints : /report/uuid and /report/uuid/download,
+    where uuid is the unique identifier of the report you generated.
+</p>
+
+<p>
+    <a href="/report/new">Generate a report now</a>
+</p>
+
+<h2>Additional documentation</h2>
+
+<p><a href="http://flashreport.io/docs.html">http://flashreport.io/docs.html</a></p>
+</body>
+</html>

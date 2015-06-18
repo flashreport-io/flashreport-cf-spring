@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flashreport CloudFoundry Spring sample</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+
+<h1>Your report generation request has been sent</h1>
+
+
+Each report is assigned a unique identifier, yours is
+
+<p th:text="${REPORT_UUID}"></p>
+
+
+<h2>Report status</h2>
+
+<p>
+    Go to <a th:href="${REPORT_STATUS_URL}" th:text="${REPORT_STATUS_URL}"></a> to ask flashreport.io
+    the status of your report.
+    <br/>Please note that the links you will see there refer to secured endpoints,
+    you won't be able to access them directly unless you use your api key as basic authentication.
+    Leave the password blank.
+</p>
+
+<h2>Download your report</h2>
+
+<p>
+    Go to <a th:href="${REPORT_DOWNLOAD_URL}" th:text="${REPORT_DOWNLOAD_URL}"></a> to download your PDF document.
+    <br/>If you get an error, it might be because the report is not ready yet, check the <i>state</i> value
+    in the status page.
+</p>
+
+</body>
+</html>
