@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
@@ -40,6 +41,12 @@ public class ReportController {
     @ResponseBody
     public ReportStatus viewReportStatus(@PathVariable String uuid) {
         return reportManager.getReportStatus(uuid);
+    }
+
+    @RequestMapping("/report/{uuid}/download")
+    @ResponseBody
+    public ModelAndView downloadReport(@PathVariable String uuid) {
+        return new ModelAndView("redirect:" + reportManager.getStorageUrl(uuid));
     }
 
 }

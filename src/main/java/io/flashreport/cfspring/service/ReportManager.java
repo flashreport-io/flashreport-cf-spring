@@ -21,4 +21,12 @@ public interface ReportManager {
      */
     ReportStatus getReportStatus(String uuid);
 
+    /**
+     * Obtain the storage url for the specified report
+     *
+     * @param uuid unique identifier of the report
+     */
+    String getStorageUrl(String uuid);
+
+
 }

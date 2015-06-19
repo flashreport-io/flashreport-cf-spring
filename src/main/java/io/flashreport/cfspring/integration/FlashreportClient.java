@@ -74,6 +74,17 @@ public class FlashreportClient {
         }
     }
 
+    public String getStorageUrl(String uuid) {
+        HttpEntity entity = new HttpEntity<>(getHeaders());
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(BASE_URL + uuid + "/storage", HttpMethod.GET, entity, String.class);
+        if (response.getStatusCode().equals(HttpStatus.OK)) {
+            return response.getBody();
+        } else {
+            throw new RuntimeException("Received unexpected response code : " + response.getStatusCode());
+        }
+    }
+
     public ReportStatus getReportStatus(String uuid) {
         try {
             return getReportStatus(new URI(BASE_URL + uuid));

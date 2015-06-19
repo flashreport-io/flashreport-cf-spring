@@ -32,6 +32,11 @@ public class ReportManagerImpl implements ReportManager {
         return client.getReportStatus(uuid);
     }
 
+    @Override
+    public String getStorageUrl(String uuid) {
+        return client.getStorageUrl(uuid);
+    }
+
     private String readTestMessage(String fileName) {
         InputStream is = this.getClass().getResourceAsStream("/" + fileName);
         StringBuilder stringBuilder = new StringBuilder();
