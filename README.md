@@ -17,32 +17,32 @@ To successfully build and deploy this app, you need
 
 1 Clone this repository and switch to its directory
 
-1 Build and package the app
+2 Build and package the app
 
     mvn clean package
     
-1 Login with CF cli (if necessary) and then switch to the org and space where you want to push the app
+3 Login with CF cli (if necessary) and then switch to the org and space where you want to push the app
 
     cf login
     cf target -o YOUR-ORG -s YOUR-SPACE
     
-1 Push the application
+4 Push the application
 
     cf push
     
-1 Create a flashreport service using the trial plan
+5 Create a flashreport service using the trial plan
 
     cf create-service flashreport trial flashreport-trial
     
-1 Bind the newly created service to your app
+6 Bind the newly created service to your app
 
     cf bind-service flashreport-cf-spring flashreport-trial
     
-1 Restage the app 
+7 Restage the app 
 
     cf restage flashreport-cf-spring
     
-1 Open the url appearing at the end of the staging process in your favourite browser
+8 Open the url appearing at the end of the staging process in your favourite browser
 
 
 You can now create and download your first report. 
