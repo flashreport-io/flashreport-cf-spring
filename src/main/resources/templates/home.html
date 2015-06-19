@@ -3,35 +3,49 @@
 <head>
     <title>Flashreport CloudFoundry Spring sample</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<h1>Flashreport CloudFoundry Spring sample</h1>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <h1>Flashreport CloudFoundry Spring sample</h1>
 
-<p>
-    This sample application lets you generate reports using the flashreport api.<br/>
-    Unless you inject the VCAP_SERVICES environment variable yourself, it will only work
-    correctly when deployed on CloudFoundry and bound to a flashreport service.
-</p>
+        <p>
+            This sample application lets you generate reports using the flashreport api.
+        </p>
 
-<h2>Generate a report</h2>
+        <div class="well">
+            Unless you inject the VCAP_SERVICES environment variable yourself, it will only work
+            correctly when deployed on CloudFoundry and bound to a flashreport service.
+        </div>
 
-<p>Use the /report/new endpoint to generate a report. For your convenience, this endpoint support both GET and
-    POST.<br/>
-    From there you can use two other endpoints : /report/uuid and /report/uuid/download,
-    where uuid is the unique identifier of the report you generated.
-</p>
+        <h2>Generate a report</h2>
 
-<p>Keep in mind that the number of reports you can generate is limited based on the plan you selected
-    in the marketplace. Attempting to generate reports when over the limit will result in 429 responses. </p>
+        <p>Use the /report/new endpoint to generate a report. For your convenience, this endpoint support both GET and
+            POST.<br/>
+            From there you can use two other endpoints : /report/uuid and /report/uuid/download,
+            where uuid is the unique identifier of the report you generated.
+        </p>
 
-<p>
-    <a href="/report/new">Generate a report now</a>
-</p>
+        <p>
+            <a class="btn btn-primary" href="/report/new" role="button">Generate a report now</a>
+        </p>
 
-<h2>Additional documentation</h2>
+        <div class="well">Keep in mind that the number of reports you can generate is limited based on the plan you
+            selected
+            in the marketplace. Attempting to generate reports when over the limit will result in 429 responses.
+        </div>
 
-<p><a href="http://flashreport.io/docs.html">http://flashreport.io/docs.html</a></p>
+
+        <h2>Additional documentation</h2>
+
+        <p><a href="http://flashreport.io/docs.html">http://flashreport.io/docs.html</a></p>
+
+    </div>
+</div>
+
 </body>
 </html>
