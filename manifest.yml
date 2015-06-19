@@ -3,3 +3,4 @@ applications:
 - name: flashreport-cf-spring
   memory: 512M
   path: target/cfspring-0.0.1-SNAPSHOT.jar
+  random-route: true
